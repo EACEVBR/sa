@@ -2,51 +2,22 @@
 {
 	internal class Program
 	{
-		public static int[][] ReshapeMatrix(int[][] mat, int r, int c)
-		{
-			int m = mat.Length; 
-			int n = mat[0].Length; 
-			int[][] reshapedMatrix = new int[r][];
-			for (int i = 0; i < r; i++)
-			{
-				reshapedMatrix[i] = new int[c];
-			}
-			for (int i = 0; i < m * n; i++)
-			{
-				reshapedMatrix[i / c][i % c] = mat[i / n][i % n];
-			}
-			return reshapedMatrix;
-		}
-
 		static void Main(string[] args)
 		{
-			int[][] mat = new int[][]
+			Console.Write("Введите число палиндром: ");
+			int num = int.Parse(Console.ReadLine());
+			string numStr = num.ToString();
+			if (numStr[numStr.Length / 2] == '0')
 			{
-			new int[] {1, 2},
-			new int[] {3, 4}
-			};
-			int rows = mat.Length;
-			int cols = mat[0].Length;
-			for (int i = 0; i < rows; i++)
-			{
-				for (int j = 0; j < cols; j++)
-				{
-					Console.Write(mat[i][j] + " ");
-				}
-				Console.WriteLine();
+				Console.WriteLine(num - (num.ToString().Length));
 			}
-			int r = 1, c = 4;
-			int[][] reshaped = ReshapeMatrix(mat, r, c);
-			int rowss = reshaped.Length;
-			int colss = reshaped[0].Length;
-			for (int i = 0; i < rowss; i++)
-			{
-				for (int j = 0; j < colss; j++)
-				{
-					Console.Write(reshaped[i][j] + " "); 
-				}
-				Console.WriteLine(); 
-			}
+			else {
+
+				Console.WriteLine((num.ToString().Length % 2 == 0) ? 
+						( num - Math.Pow(10, num.ToString().Length / 2 - 1) - Math.Pow(10, num.ToString().Length / 2)) 
+						: num - Math.Pow(10, num.ToString().Length / 2));
+			
+			} 
 		}
 	}
 }
